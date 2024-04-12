@@ -5,7 +5,6 @@ import mysql.connector
 from tkinter import messagebox
 import tkinter
 
-
 class GymnasiumManagementSystem: 
     def __init__(self,root):
         self.root=root
@@ -222,7 +221,7 @@ class GymnasiumManagementSystem:
         self.Gymnasium_table.bind("<ButtonRelease-1>",self.get_cursor)
 
     def adda_data(self):
-        conn=mysql.connector.connect(host="",username="",password="",database="")
+        conn=mysql.connector.connect(host="localhost",username="root",password="Ainpur@123",database="mydata")
         my_cursor=conn.cursor()
         my_cursor.execute("insert into gymnasium values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
                                                                                                                 self.Member_var.get(),
@@ -249,7 +248,7 @@ class GymnasiumManagementSystem:
         messagebox.showinfo("Sucsess","Member Has Been Insertes Successfully")
 
     def update(self):
-        conn=mysql.connector.connect(host="",username="",password="",database="")
+        conn=mysql.connector.connect(host="localhost",username="root",password="Ainpur@123",database="mydata")
         my_cursor=conn.cursor()
         my_cursor.execute("update gymnasium set Member=%s,FirstName=%s,LastName=%s,DOB=%s,ContactNo=%s,Email=%s,CurrentAddress=%s,PermanantAddress=%s,PostCode=%s,Weight=%s,Height=%s,BicepsSize=%s,ChestSize=%s,JoiningDate=%s,Fees=%s,ExpiryDate=%s where CodeNo=%s",(
                                                                                                                                                                                                                                                                                 self.Member_var.get(),
@@ -277,7 +276,7 @@ class GymnasiumManagementSystem:
         messagebox.showinfo("Sucsess","Member Has Been Update Successfully")
 
     def fatch_data(self):
-        conn=mysql.connector.connect(host="",username="",password="",database="")
+        conn=mysql.connector.connect(host="localhost",username="root",password="Ainpur@123",database="mydata")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from gymnasium")
         rows=my_cursor.fetchall()
@@ -341,7 +340,7 @@ class GymnasiumManagementSystem:
         if self.CodeNo_var.get()=="" or self.PostCode_var.get()=="":
             messagebox.showerror("Error","First Select The Member")
         else:
-            conn=mysql.connector.connect(host="",username="",password="",database="")
+            conn=mysql.connector.connect(host="localhost",username="root",password="Ainpur@123",database="gymmsdata")
             my_cursor=conn.cursor()
             query="delete from gymnasium where CodeNo=%s"
             value=(self.CodeNo_var.get(),)
